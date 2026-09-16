@@ -31,4 +31,12 @@ public class Login {
         return isValid;
     }
     
+    //method to check cell phone number validation
+    boolean checkCellPhoneNumber(String phoneNum){
+        boolean isValid = false;
+        if (phoneNum.length() != 0){
+            isValid = Pattern.matches("^\\+27[0-9]{9}$", phoneNum);
+        }
+        return isValid;
+    }
 }
