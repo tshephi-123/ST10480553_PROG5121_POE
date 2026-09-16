@@ -39,4 +39,18 @@ public class Login {
         }
         return isValid;
     }
+    
+    
+    public String registerUser(String userName, String password, String phoneNum){
+        if (!checkUserName(userName)) {
+            return "Username is not correctly formatted; please ensure that the ussername contains an underscore and is more than five characters in length.";
+        }
+        if (!checkPassword(password)){
+            return "Password is not correctly formatted; please ensure that the password contains at least eight characters, a capital letter, a number,and a special character.";
+        }
+        if (!checkCellPhoneNumber(phoneNum)){
+            return "Cell phone number is incorrecly formatted or does not contain international code.";
+        }
+        return "User successfully registered.";
+    }
 }
