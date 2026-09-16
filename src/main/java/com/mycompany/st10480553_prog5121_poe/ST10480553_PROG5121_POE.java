@@ -52,5 +52,17 @@ public class ST10480553_PROG5121_POE {
         System.out.println("Password successfully captured.");
         
         
-    }
+       
+        //A loop to confirm if the phone number is valid
+        System.out.print("Enter cell phone number(e.g., +27131961976): ");
+        phoneNum = myInput.nextLine();
+        
+     while(!login.checkCellPhoneNumber(phoneNum)){
+            System.out.println("Cell phone number is incorrecly formatted or does nit contain international code.");
+            System.out.print("Please re-enter cell phone number: ");
+            phoneNum = myInput.nextLine();
+     }
+     System.out.println("Cell phone number successfully captured.");
+    
+     }
 }
