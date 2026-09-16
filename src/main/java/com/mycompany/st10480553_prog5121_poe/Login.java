@@ -9,5 +9,12 @@ package com.mycompany.st10480553_prog5121_poe;
  * @author dulcy
  */
 public class Login {
-    
+    // Check username and make sure: must not be empty, should contain '_', and max 5 characters
+    boolean checkUserName(String userName){
+        boolean isValid =false;
+        if(userName.length() !=0) {
+            isValid = userName.contains("_") && userName.length ()<=5;
+        }
+        return isValid
+    }
 }
