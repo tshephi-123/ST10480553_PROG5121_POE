@@ -15,6 +15,20 @@ public class Login {
         if(userName.length() !=0) {
             isValid = userName.contains("_") && userName.length ()<=5;
         }
-        return isValid
+        return isValid;
     }
+    
+    //method to check the password complexity
+    boolean checkPassword(String password){
+        boolean isValid = false;
+        if(password.length() !=0 && password.length()>=8){
+            boolean hasCapital = !password.equals(password.toLowerCase());
+            boolean hasDigit = password.matches(".*\\d.*");
+            boolean hasSpecial = password.matches(".*[!@#$%^&*()_+\\-=[\\]{};':\"\\\\|,.<>/?].*");
+            
+            isValid = hasCapital && hasDigit && hasSpecial;
+        }
+        return isValid;
+    }
+    
 }
