@@ -40,7 +40,7 @@ public class ST10480553_PROG5121_POE {
              }
         System.out.println("Username successfully captured.");
         
-        //Loop the password to check if it's valid or not
+        //Loop the password to check if it's valid 
         System.out.print("Enter password (min 8 chars, 1 uppercase, 1 number, 1 special char):");
         password = myInput.nextLine();
         
