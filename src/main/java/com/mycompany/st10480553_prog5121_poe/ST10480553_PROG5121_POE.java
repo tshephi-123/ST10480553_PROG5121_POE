@@ -22,10 +22,10 @@ public class ST10480553_PROG5121_POE {
         String phoneNum;
         String password;
         
-        //Ask user to enter name and surname
+        //Ask user to enter name 
         System.out.print("Enter first name: ");
         firstName = myInput.nextLine();
-        
+        //Ask user to enter surname
         System.out.print("Enter last name: ");
         lastName = myInput.nextLine();
         
