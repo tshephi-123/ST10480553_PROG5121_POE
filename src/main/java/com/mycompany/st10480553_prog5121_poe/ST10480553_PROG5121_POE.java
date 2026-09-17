@@ -45,7 +45,7 @@ public class ST10480553_PROG5121_POE {
         password = myInput.nextLine();
         
         while(!login.checkPassword(password)){
-            System.out.println("Password is not correctly formatted; please ensure that the password contains at least eight characters, a caoital letter, a number,and a special character.");
+            System.out.println("Password is not correctly formatted; please ensure that the password contains at least eight characters, a capital letter, a number,and a special character.");
             System.out.print("Please re-enter password: ");
             password = myInput.nextLine();
         }
@@ -58,11 +58,26 @@ public class ST10480553_PROG5121_POE {
         phoneNum = myInput.nextLine();
         
      while(!login.checkCellPhoneNumber(phoneNum)){
-            System.out.println("Cell phone number is incorrecly formatted or does nit contain international code.");
+            System.out.println("Cell phone number is incorrecly formatted or does not contain international code.");
             System.out.print("Please re-enter cell phone number: ");
             phoneNum = myInput.nextLine();
      }
      System.out.println("Cell phone number successfully captured.");
+     
+     //Display registration status message
+     String registrationStatus = login.registerUser(userName, password, phoneNum);
+     System.out.println("Registration status: + registrationStatus");
+     
+     //Authenticating login user inforamtion
+     System.out.println("User login");
+     
+     System.out.print("Enter Username: ");
+     String inputUserName = myInput. nextLine();
+     System.out.print("Enter Password: ");
+     String inputPassword = myInput.nextLine();
+     
+     
+     
     
      }
 }
