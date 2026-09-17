@@ -4,6 +4,7 @@
  */
 package com.mycompany.st10480553_prog5121_poe;
 
+import java.util.regex.Pattern;
 /**
  *
  * @author dulcy
@@ -24,7 +25,7 @@ public class Login {
         if(password.length() !=0 && password.length()>=8){
             boolean hasCapital = !password.equals(password.toLowerCase());
             boolean hasDigit = password.matches(".*\\d.*");
-            boolean hasSpecial = password.matches(".*[!@#$%^&*()_+\\-=[\\]{};':\"\\\\|,.<>/?].*");
+            boolean hasSpecial = password.matches(".*[^a-zA-Z0-9].*");
             
             isValid = hasCapital && hasDigit && hasSpecial;
         }
@@ -55,7 +56,7 @@ public class Login {
     }
      
     //autheenticating login user information
-    boolean loginUser(String inputUsername, String inputPassword, String storedUsername,String storedPassword){
+     public boolean loginUser(String inputUsername, String inputPassword, String storedUsername,String storedPassword){
         boolean isValid = false;
         if (inputUsername.length() != 0 && inputPassword.length() !=0){
             isValid = inputUsername.equals(storedUsername) && inputPassword.equals(storedPassword);
@@ -63,6 +64,14 @@ public class Login {
         return isValid;
     }
     
-   
+   //display message
+    public String returnLoginStatus(boolean isLoggedIn, String firstName, String lastName){
+        if (isLoggedIn){
+            return "Welcom " + firstName + " ," + lastName + "it is great to see you again. ";
+        }
+        else{
+            return "Username or password incorrect, please try again.";
+        }
+    }
 }
 
