@@ -65,7 +65,7 @@ public class ST10480553_PROG5121_POE {
      }
      System.out.println("Cell phone number successfully captured.");
      
-     //Display registration status message
+     //Sending captured details to register the user and display the status
      String registrationStatus = login.registerUser(userName, password, phoneNum);
      System.out.println("Registration status: "+ registrationStatus);
      
