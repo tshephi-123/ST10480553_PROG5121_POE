@@ -40,7 +40,7 @@ public class Login {
         return isValid;
     }
     
-    
+    //method to register the user
     public String registerUser(String userName, String password, String phoneNum){
         if (!checkUserName(userName)) {
             return "Username is not correctly formatted; please ensure that the ussername contains an underscore and is more than five characters in length.";
@@ -53,4 +53,16 @@ public class Login {
         }
         return "User successfully registered.";
     }
+     
+    //autheenticating login user information
+    boolean loginUser(String inputUsername, String inputPassword, String storedUsername,String storedPassword){
+        boolean isValid = false;
+        if (inputUsername.length() != 0 && inputPassword.length() !=0){
+            isValid = inputUsername.equals(storedUsername) && inputPassword.equals(storedPassword);
+           }
+        return isValid;
+    }
+    
+   
 }
+
