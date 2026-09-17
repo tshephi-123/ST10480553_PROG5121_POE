@@ -57,6 +57,7 @@ public class ST10480553_PROG5121_POE {
         System.out.print("Enter cell phone number(e.g., +27131961976): ");
         phoneNum = myInput.nextLine();
         
+        //make sure the cell phone number fits the required format
      while(!login.checkCellPhoneNumber(phoneNum)){
             System.out.println("Cell phone number is incorrecly formatted or does not contain international code.");
             System.out.print("Please re-enter cell phone number: ");
