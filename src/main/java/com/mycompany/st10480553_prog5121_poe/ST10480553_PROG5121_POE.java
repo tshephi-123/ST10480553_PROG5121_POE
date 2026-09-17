@@ -66,7 +66,7 @@ public class ST10480553_PROG5121_POE {
      
      //Display registration status message
      String registrationStatus = login.registerUser(userName, password, phoneNum);
-     System.out.println("Registration status: + registrationStatus");
+     System.out.println("Registration status: "+ registrationStatus);
      
      //Authenticating login user inforamtion
      System.out.println("User login");
@@ -76,7 +76,11 @@ public class ST10480553_PROG5121_POE {
      System.out.print("Enter Password: ");
      String inputPassword = myInput.nextLine();
      
+     //displaying login status
+     boolean isLoggedIn = login.loginUser(inputUserName, inputPassword, userName, password);
+     String loginStatusMessage = login.returnLoginStatus(isLoggedIn, firstName, lastName);
      
+     System.out.println("Login Status: " +loginStatusMessage);
      
     
      }

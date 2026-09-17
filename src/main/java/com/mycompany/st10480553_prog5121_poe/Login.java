@@ -59,7 +59,9 @@ public class Login {
      public boolean loginUser(String inputUsername, String inputPassword, String storedUsername,String storedPassword){
         boolean isValid = false;
         if (inputUsername.length() != 0 && inputPassword.length() !=0){
-            isValid = inputUsername.equals(storedUsername) && inputPassword.equals(storedPassword);
+            boolean isUsernameMatch = inputUsername.equals(storedUsername);
+            boolean isPasswordMatch = inputPassword.equals(storedPassword);
+            isValid = isUsernameMatch && isPasswordMatch;
            }
         return isValid;
     }
@@ -67,7 +69,7 @@ public class Login {
    //display message
     public String returnLoginStatus(boolean isLoggedIn, String firstName, String lastName){
         if (isLoggedIn){
-            return "Welcom " + firstName + " ," + lastName + "it is great to see you again. ";
+            return "Welcome " + firstName + " ," + lastName + " it is great to see you again. ";
         }
         else{
             return "Username or password incorrect, please try again.";
