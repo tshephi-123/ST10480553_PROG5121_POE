@@ -32,9 +32,8 @@ public class ST10480553_PROG5121_POE {
         //Loop the username to check if it's valid or not
         System.out.print("Enter Username(must contain '_' and max 5 char): ");
         userName = myInput.nextLine();
-        
         while(!login.checkUserName(userName)){
-            System.out.println("Username is not correctly formatted; please ensure that the ussername contains an underscore and is more than five characters in length.");
+            System.out.println("Username is not correctly formatted; please ensure that the ussername contains an underscore and is not more than five characters in length.");
             System.out.print("Please re-enter username: ");
             userName = myInput.nextLine();
              }
@@ -43,7 +42,6 @@ public class ST10480553_PROG5121_POE {
         //Loop the password to check if it's valid 
         System.out.print("Enter password (min 8 chars, 1 uppercase, 1 number, 1 special char):");
         password = myInput.nextLine();
-        
         while(!login.checkPassword(password)){
             System.out.println("Password is not correctly formatted; please ensure that the password contains at least eight characters, a capital letter, a number,and a special character.");
             System.out.print("Please re-enter password: ");
@@ -51,8 +49,6 @@ public class ST10480553_PROG5121_POE {
         }
         System.out.println("Password successfully captured.");
         
-        
-       
         //A loop to confirm if the phone number is valid
         System.out.print("Enter cell phone number(e.g., +27131961976): ");
         phoneNum = myInput.nextLine();
@@ -71,9 +67,8 @@ public class ST10480553_PROG5121_POE {
      
      //Authenticating login user inforamtion
      System.out.println("User login");
-     
      System.out.print("Enter Username: ");
-     String inputUserName = myInput. nextLine();
+     String inputUserName = myInput.nextLine();
      System.out.print("Enter Password: ");
      String inputPassword = myInput.nextLine();
      
@@ -82,7 +77,32 @@ public class ST10480553_PROG5121_POE {
      String loginStatusMessage = login.returnLoginStatus(isLoggedIn, firstName, lastName);
      
      System.out.println("Login Status: " +loginStatusMessage);
-     
     
+     //Part 2: QuickChat menu system
+     if(isLoggedIn){
+         System.out.println("Welcome to QuickChat.");
+         Message msgSystem = new Message();
+         int totalMessagesSent = 0;
+         boolean running = true;
+         
+         while(running){
+             System.out.println("Choose an option:");
+             System.out.println("1) Send Messages");
+             System.out.println("2) Show recently sent messages");
+             System.out.println("3) Quit");
+             System.out.println("Enter your choice (1-3): ");
+             if (myInput.hasNextInt()){
+                 int choice = myInput.nextInt();
+                 myInput.nextLine();
+             }
+             else {
+                 System.out.println("Invalid input. Please entera number between 1 and 3.");
+                 myInput.next();
+             }
+             
+      
      }
 }
+    }
+}
+    
