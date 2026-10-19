@@ -18,5 +18,5 @@ on:
 				java-version: '21'
 				distribution: 'temurin'
 			cache: maven
-		- nam: Build with Maven
+		- nam: Build with Maeven
 			run:mvn test
