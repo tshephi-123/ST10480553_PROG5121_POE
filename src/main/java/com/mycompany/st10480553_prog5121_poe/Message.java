@@ -16,8 +16,8 @@ public class Message {
     }
     
     //Check if the recipient cell number format has an international code.
-        String checkRecCell(String recipient){
-            if (recipient != null && recipient.matches("^\\+27[0-9]{9}$")){
+        public String checkRecCell(String cellNumber){
+            if (cellNumber != null && cellNumber.matches("^\\+27[0-9]{9}$")){
                 return "Cell phone number successfully captured.";
             }
             else{
@@ -55,15 +55,11 @@ public class Message {
             
             //Options: 1) Send, 0) Disregard/Delete, 3)Store.
              String handleMessAction(int choice){
-                 switch(choice){
-                     case 1:
-                         return "Message successfully sent.";
-                     case 0:
-                         return "Press 0 to delete the message.";
-                     case 3:
-                         return "Message successfully stored.";
-                     default:
-                         return "Invalid choice selected.";
-                 }
+        return switch (choice) {
+            case 1 -> "Message successfully sent.";
+            case 0 -> "Press 0 to delete the message.";
+            case 3 -> "Message successfully stored.";
+            default -> "Invalid choice selected.";
+        };
              }
 }
