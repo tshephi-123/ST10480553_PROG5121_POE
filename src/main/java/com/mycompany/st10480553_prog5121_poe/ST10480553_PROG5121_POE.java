@@ -91,18 +91,80 @@ public class ST10480553_PROG5121_POE {
              System.out.println("2) Show recently sent messages");
              System.out.println("3) Quit");
              System.out.println("Enter your choice (1-3): ");
+             
+              int choice = 0;
              if (myInput.hasNextInt()){
-                 int choice = myInput.nextInt();
+                  choice = myInput.nextInt();
                  myInput.nextLine();
              }
              else {
                  System.out.println("Invalid input. Please entera number between 1 and 3.");
                  myInput.next();
+                 continue;
              }
              
-      
+             switch (choice){
+                 case 1 -> {
+                     System.out.print("How many messages would you like to enter? ");
+                     int numMessage = Integer.parseInt(myInput.nextLine());
+                     
+                     for (int i = 0; i < numMessage; i++){
+                         System.out.println("Message" +(i+1) + " ");
+                         String msgID = myInput.nextLine();
+                         while(!msgSystem.checkMessID(msgID)){
+                             System.out.println("Message ID is too long. Please enter max 10 characters: ");
+                             msgID= myInput.nextLine();
+                         }
+                         System.out.println("Message ID generated: "+ msgID);
+                         System.out.print("Enter Recipient Cell Number(e.g., +27123456789): ");
+                         String recipient = myInput.nextLine();
+                         String cellCheckResult = msgSystem.checkRecCell(recipient);
+                         System .out.println(cellCheckResult);
+                         while(!cellCheckResult.contains("Successfully captured")){
+                             System.out.print("Please re-enter recipient number: ");
+                             recipient = myInput.nextLine();
+                             cellCheckResult= msgSystem.checkRecCell(recipient);
+                             System.out.println(cellCheckResult);  
+                         }
+                         System.out.print("Enter Message text(max 250 chars): ");
+                         String messageText = myInput.nextLine();
+                         String lengthCheck = msgSystem.sentMess(messageText);
+                         System.out.println(lengthCheck);
+                         while(!lengthCheck.contains("ready to send))")){
+                             System.out.println(lengthCheck);
+                         }
+                         
+                         //Create message hash
+                         String hash = msgSystem.createMessHash(msgID, i, messageText);
+                         System.out.println("Message Hash: " + hash);
+                         System.out.println("Select action:");
+                         System.out.println("1) Send Message");
+                         System.out.println("0) Disregard Message");
+                         System.out.println("3) Store Message to send later");
+                         System.out.print("Enter choice: ");
+                         int actionChoice = Integer.parseInt(myInput.nextLine());
+                         String actionResult = msgSystem.handleMessAction(actionChoice);
+                         System.out.println(actionResult);
+                         
+                         if (actionChoice == 1){
+                             totalMessagesSent++;   
+                         }
+                     }
+                     System.out.println("Total number of messages sent: " + totalMessagesSent);
+                 }
+                     
+                 case 2 -> System.out.println("Coming Soon");
+                     
+                 case 3 -> {
+                     System.out.println("Exiting QuickChat. Goodbye!");
+                     running = false;
+                 }
+                     
+                 default -> System.out.println("Invalid option. Please choose 1, 2, or 3.");     
+         }
+     }
      }
 }
     }
-}
+
     
