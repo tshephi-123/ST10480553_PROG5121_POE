@@ -11,36 +11,33 @@ import java.util.regex.Pattern;
  */
 public class Login {
     // Check username and make sure: must not be empty, should contain '_', and max 5 characters
-    boolean checkUserName(String userName){
-        boolean isValid =false;
-        if(userName.length() !=0) {
-            isValid = userName.contains("_") && userName.length ()<=5;
+    public boolean checkUserName(String userName){
+        if(userName == null ) {
+            return false;
         }
-        return isValid;
+        return userName.contains("_") && userName.length() <=5;
     }
-    
-    //method to check the password complexity
-    boolean checkPassword(String password){
-        boolean isValid = false;
-        if(password.length() !=0 && password.length()>=8){
-            boolean hasCapital = !password.equals(password.toLowerCase());
-            boolean hasDigit = password.matches(".*\\d.*");
-            boolean hasSpecial = password.matches(".*[^a-zA-Z0-9].*");
+          
+    // check the password complexity
+     public boolean checkPassword(String password){
+           if(password == null || password.length()<8){
+               return false;
+           }
+            boolean hasCapital = Pattern.compile("[A-Z]").matcher(password).find();
+            boolean hasDigit = Pattern.compile("[0-9]").matcher(password).find();
+            boolean hasSpecial = Pattern.compile("[a-zA-Z0-9]").matcher(password).find();
             
-            isValid = hasCapital && hasDigit && hasSpecial;
+            return hasCapital && hasDigit && hasSpecial;
         }
-        return isValid;
-    }
-    
+      
     //method to check cell phone number validation
-    boolean checkCellPhoneNumber(String phoneNum){
-        boolean isValid = false;
-        if (phoneNum.length() != 0){
-            isValid = Pattern.matches("^\\+27[0-9]{9}$", phoneNum);
+    public boolean checkCellPhoneNumber(String phoneNum){
+        if (phoneNum == null) {
+            return false;
         }
-        return isValid;
+        return Pattern.matches("^\\+27[0-9]{9}$", phoneNum);
     }
-    
+     
     //method to register the user
     public String registerUser(String userName, String password, String phoneNum){
         if (!checkUserName(userName)) {
@@ -57,19 +54,16 @@ public class Login {
      
     //autheenticating login user information
      public boolean loginUser(String inputUsername, String inputPassword, String storedUsername,String storedPassword){
-        boolean isValid = false;
-        if (inputUsername.length() != 0 && inputPassword.length() !=0){
-            boolean isUsernameMatch = inputUsername.equals(storedUsername);
-            boolean isPasswordMatch = inputPassword.equals(storedPassword);
-            isValid = isUsernameMatch && isPasswordMatch;
-           }
-        return isValid;
-    }
-    
-   //display message
+        if (inputUsername == null || inputPassword == null || storedUsername == null || storedPassword == null){
+        return false;
+        }
+        return inputUsername.equals(storedUsername) && inputPassword.equals(storedPassword);    
+     }
+            
+     //display message
     public String returnLoginStatus(boolean isLoggedIn, String firstName, String lastName){
         if (isLoggedIn){
-            return "Welcome " + firstName + " ," + lastName + " it is great to see you again. ";
+            return "Welcome " + firstName + " ," + lastName + " it is great to see you again.";
         }
         else{
             return "Username or password incorrect, please try again.";
